@@ -16,19 +16,14 @@ import noise from "../../../assets/image/noise.png";
 import pollution from "../../../assets/image/noise-pollution.png";
 import road from "../../../assets/image/road.png";
 import hour from "../../../assets/image/24-hours.png";
-import scatter from "../../../assets/image/scatter-plot.png";
-import { ECharts } from "react-native-echarts-wrapper";
+
 import { useFocusEffect } from "@react-navigation/core";
 import config from "../../config";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-const chartData1 = [
-  { z: 1, z: 50 },
-  { z: 5, z: 30 },
-  { x: 10, y: 70 },
-  { x: 15, y: 20 },
-  { x: 20, y: 80 },
-  { x: 25, y: 87 },
-];
+
+
+
+
 const Devices = [
   "Device Change",
   "Toyota Camry",
@@ -54,6 +49,7 @@ const chartData3 = [];
 for (let x = -30; x <= 30; x++) {
   const y = Math.exp(-(x * x) / 100);
   chartData3.push({ x, y });
+
 }
 
 const HomeScreen = () => {
@@ -71,7 +67,9 @@ const HomeScreen = () => {
           );
           const deviceData = await deviceResponse.json();
 
+
           const ruId = deviceData[0].RU_id;
+
 
           const requestBody = {
             deviceRUids: [ruId],
@@ -231,12 +229,14 @@ const HomeScreen = () => {
           >
             <Text style={{ fontSize: 15 }}>Number of Horns played per day</Text>
           </View>
-          <LineChart
+          {
+            chart1Data.length > 0 ?  (
+            <LineChart
             data={{
-              labels: chartData1.map((dataPoint) => dataPoint.x),
+              labels: chart1Data.map((dataPoint) => dataPoint.x),
               datasets: [
                 {
-                  data: chartData1.map((dataPoint) => dataPoint.y),
+                  data: chart1Data.map((dataPoint) => dataPoint.y),
                 },
               ],
             }}
@@ -262,6 +262,9 @@ const HomeScreen = () => {
               marginRight: 30,
             }}
           />
+            ) : null
+          }
+          
         </View>
         <View style={styles.containerWrapper}>
           <View
