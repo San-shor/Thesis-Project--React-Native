@@ -198,32 +198,7 @@ const HomeScreen = () => {
         </View>
 
         <View style={styles.containerWrapper}>
-          <View style={styles.flexContainer}>
-            <TouchableOpacity style={styles.button} onPress={handlePress}>
-              <Text
-                style={[
-                  styles.buttonText,
-                  isYearView ? styles.activeButtonText : null,
-                ]}
-              >
-                {isYearView && "Year View"}
-                {isMonthView && "Month View"}
-                {!isYearView && !isMonthView && "Week View"}
-              </Text>
-            </TouchableOpacity>
-
-            <SelectDropdown
-              data={Devices}
-              onSelect={(selectedItem, index) => {
-                console.log(selectedItem, index);
-              }}
-              buttonStyle={styles.dropdownButton}
-              buttonTextStyle={styles.dropdownButtonText}
-              dropdownStyle={styles.dropdown}
-              dropdownTextStyle={styles.dropdownText}
-              defaultButtonText="Device change"
-            />
-          </View>
+          
           <View
             style={{ flex: 1, justifyContent: "center", alignItems: "center" }}
           >
@@ -377,7 +352,7 @@ const styles = StyleSheet.create({
     borderRadius: 30,
     borderWidth: 1,
     borderColor: "#000000",
-    height: "30px",
+    
   },
   dropdownButton: {
     paddingVertical: 2,
